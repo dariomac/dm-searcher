@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import rootReducer from '../reducers';
-import { watcherSaga } from '../sagas';
+import { watcherSaga, fetchSaga } from '../sagas';
 
 // dev tools middleware
 const reduxDevTools =
@@ -22,5 +22,8 @@ export default createStore(
   initialStore,
   compose(applyMiddleware(sagaMiddleware), reduxDevTools));
 
+// https://stackoverflow.com/questions/39438005/what-is-the-idiomatic-way-of-starting-rootsaga/47623129
+const rootSaga = fetchSaga;
+
 // run the saga
-sagaMiddleware.run(watcherSaga);
+sagaMiddleware.run(rootSaga);

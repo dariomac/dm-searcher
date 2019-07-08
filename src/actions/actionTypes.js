@@ -1,2 +1,5 @@
 export const GET_ALL_PAGES = 'GET_ALL_PAGES';
 export const TEST_ACTION = 'TEST_ACTION';
+
+export const FETCH_INVENTORY = 'FETCH_INVENTORY';
+export const COMMIT_INVENTORY = 'COMMIT_INVENTORY';
