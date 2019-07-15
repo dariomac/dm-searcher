@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
 import actions from './actions';
-import ArticleInventoryLoader from './components/ArticleInventoryLoader';
+import ArticleInventoryLoader from './components/InventoryLoader';
 
 const App = ({ testProp, testActionProp }) => {
   return (

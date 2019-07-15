@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import actions from '../actions';
+import { actions } from './InventoryLoader.module';
 
 const ArticleInventoryLoader = ({ fetchInventory }) => {
   return (
