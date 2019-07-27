@@ -14,7 +14,10 @@ export const fetchInventoryReducer = (state = {}, action) => {
 export const commitInventoryFetcher = (state = {}, action) => {
   switch (action.type) {
     case COMMIT_INVENTORY:
-      return action.payload;
+      return {
+        ...state,
+        inventory: action.payload
+      };
     default:
       return state;
   }

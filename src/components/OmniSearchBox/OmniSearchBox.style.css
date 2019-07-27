@@ -1,0 +1,7 @@
+.omni-search-box input[type=text] {
+  width: 100%; box-sizing: border-box; height: 28px; 
+}
+
+.omni-search-box button {
+  height: 28px;
+}

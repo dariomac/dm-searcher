@@ -3,10 +3,16 @@ import testReducer from './testReducer';
 
 import {
   commitInventoryFetcher
-  // fetchInventoryReducer,
 } from '../components/InventoryLoader/InventoryLoader.module';
+
+import {
+  searchReducer,
+  commitSearchReducer
+} from '../components/OmniSearchBox/OmniSearchBox.module'
 
 export default combineReducers({
   test: testReducer,
-  articles: commitInventoryFetcher
+  articles: commitInventoryFetcher,
+  q: searchReducer,
+  searchResult: commitSearchReducer
 });

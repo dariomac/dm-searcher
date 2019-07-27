@@ -5,7 +5,7 @@ import { actions } from './InventoryLoader.module';
 const ArticleInventoryLoader = ({ fetchInventory }) => {
   return (
     <>
-      <p>aaaaa</p>
+      <p>Loading</p>
       { fetchInventory() }
     </>
   );
