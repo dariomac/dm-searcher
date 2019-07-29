@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import './OmniSearchBox.style.css';
 import { actions } from './OmniSearchBox.module';
 
-const OmniBoxSearch = ({ inventorySelector, search }) => {
-  const [q, setQ] = useState('');
-
+const OmniBoxSearch = ({ haystackSelector, search }) => {
+  const [needle, setNeedle] = useState('');
+debugger
   const onChange = React.useCallback((e) => {
-      const partialQ = e.target.value;
-      setQ(partialQ);
+      const partialNeedle = e.target.value;
+      setNeedle(partialNeedle);
     },
-    [setQ],
+    [setNeedle],
   );
 
   return (
@@ -21,7 +21,7 @@ const OmniBoxSearch = ({ inventorySelector, search }) => {
             <input type='text' onChange={onChange}/>
           </div>
           <div className='col-1'>
-            <button onClick={() => search(q, inventorySelector)}>Go</button>
+            <button onClick={() => search(needle, haystackSelector)}>Go</button>
           </div>
         </div>
       </div>
@@ -35,8 +35,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    search: (q, inventorySelector) => {
-      return dispatch(actions.searchAction(q, inventorySelector))
+    search: (needle, haystackSelector) => {
+      return dispatch(actions.searchAction(needle, haystackSelector))
     }
   };
 };

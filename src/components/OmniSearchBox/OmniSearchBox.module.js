@@ -27,11 +27,11 @@ export const commitSearchReducer = (state = {}, action) => {
 }
 
 export const actions = {
-  searchAction: (q, inventorySelector) => {
+  searchAction: (needle, inventorySelector) => {
     return {
       type: SEARCH,
       payload: {
-        q,
+        needle,
         inventorySelector
       }
     }

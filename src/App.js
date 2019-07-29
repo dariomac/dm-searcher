@@ -2,17 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import actions from './actions';
-import ArticleInventoryLoader from './components/InventoryLoader';
+import InventoryLoader from './components/InventoryLoader';
 import OmniSearchBox from './components/OmniSearchBox';
 
-const App = ({ testProp, testActionProp }) => {
+const App = ({}) => {
   return (
     <>
       <div className='container'>
         <div className='row'>
           <div className='col-12'>
-            <OmniSearchBox inventorySelector="articles"/>
-            <button onClick={() => { testActionProp('hola!!!'); }}>Click me</button>
+            <OmniSearchBox haystackSelector="articles"/>
           </div>
         </div>
         <div className='row'>
@@ -22,23 +21,17 @@ const App = ({ testProp, testActionProp }) => {
         </div>
       </div>
 
-      <ArticleInventoryLoader />
+      <InventoryLoader url='./inventory.json'/>
     </>
   );
 };
 
 const mapStateToProps = (state) => {
-  return {
-    testProp: state.test.testValue
-  };
+  return {};
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    testActionProp: (val) => {
-      dispatch(actions.testAction(val));
-    }
-  };
+  return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

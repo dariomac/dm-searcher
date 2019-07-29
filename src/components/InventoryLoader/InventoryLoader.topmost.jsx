@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { actions } from './InventoryLoader.module';
 
-const ArticleInventoryLoader = ({ fetchInventory }) => {
+const InventoryLoader = ({ url, fetchInventory }) => {
   return (
     <>
       <p>Loading</p>
-      { fetchInventory() }
+      { fetchInventory(url) }
     </>
   );
 };
@@ -17,10 +17,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchInventory: () => {
-      dispatch(actions.fetchInventoryAction());
+    fetchInventory: (url) => {
+      dispatch(actions.fetchInventoryAction(url));
     }
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ArticleInventoryLoader);
+export default connect(mapStateToProps, mapDispatchToProps)(InventoryLoader);

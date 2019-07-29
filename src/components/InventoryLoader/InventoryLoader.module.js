@@ -1,16 +1,6 @@
 export const FETCH_INVENTORY = 'FETCH_INVENTORY';
 export const COMMIT_INVENTORY = 'COMMIT_INVENTORY';
 
-export const fetchInventoryReducer = (state = {}, action) => {
-  switch (action.type) {
-    case FETCH_INVENTORY:
-      console.log('fetching... reducer???');
-      return state;
-    default:
-      return state;
-  }
-};
-
 export const commitInventoryFetcher = (state = {}, action) => {
   switch (action.type) {
     case COMMIT_INVENTORY:
@@ -24,9 +14,12 @@ export const commitInventoryFetcher = (state = {}, action) => {
 };
 
 export const actions = {
-  fetchInventoryAction: () => {
+  fetchInventoryAction: (url) => {
     return {
-      type: FETCH_INVENTORY
+      type: FETCH_INVENTORY,
+      payload: { 
+        url
+      }
     };
   },
   commitInventoryAction: (payload) => {
