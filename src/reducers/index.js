@@ -13,6 +13,6 @@ import {
 export default combineReducers({
   test: testReducer,
   articles: commitInventoryFetcher,
-  q: searchReducer,
-  searchResult: commitSearchReducer
+  needle: searchReducer,
+  omniSearchBox: commitSearchReducer
 });

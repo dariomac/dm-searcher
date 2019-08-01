@@ -5,7 +5,7 @@ import { actions } from './OmniSearchBox.module';
 
 const OmniBoxSearch = ({ haystackSelector, search }) => {
   const [needle, setNeedle] = useState('');
-debugger
+
   const onChange = React.useCallback((e) => {
       const partialNeedle = e.target.value;
       setNeedle(partialNeedle);

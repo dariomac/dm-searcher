@@ -5,7 +5,6 @@ import { actions } from './InventoryLoader.module';
 const InventoryLoader = ({ url, fetchInventory }) => {
   return (
     <>
-      <p>Loading</p>
       { fetchInventory(url) }
     </>
   );

@@ -4,10 +4,9 @@ export const CLEAR = 'CLEAR';
 export const COMMIT_CLEAR = 'COMMIT_CLEAR';
 
 export const searchReducer = (state = {}, action) => {
-  console.log(action.type)
   switch (action.type) {
     case SEARCH:
-      return action.payload.q;
+      return action.payload.needle;
     default:
       return state;
   };
@@ -18,7 +17,7 @@ export const commitSearchReducer = (state = {}, action) => {
     case COMMIT_SEARCH:
       return {
         ...state,
-        searchResult: action.payload,
+        findings: action.payload,
         filtered: true
       }
     default:
@@ -36,10 +35,10 @@ export const actions = {
       }
     }
   },
-  commitSearch: (searchResult) => {
+  commitSearch: (findings) => {
     return {
       type: COMMIT_SEARCH,
-      payload: searchResult
+      payload: findings
     }
   }
 }
