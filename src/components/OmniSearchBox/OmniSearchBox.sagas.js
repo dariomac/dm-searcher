@@ -18,6 +18,8 @@ function * search(action) {
   // **[$contains(`Product Name`, 'Hat')].SKU ~> $sort(function($l, $r) {$l > $r})
   // **[$contains(`Product Name`, 'Hat')].[SKU, Price]
   // **[$contains(`Product Name`, 'Hat')].({'s': $.SKU, 'p': $.Price})^(>s)
+  
+  // **[$contains(`laneid`, 'Essay')].({'title':$.title, 'position':$.position})
   console.log(action.payload.needle)
   let res;
   try {

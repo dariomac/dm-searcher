@@ -38,7 +38,11 @@ const App = ({inventory}) => {
         </div>
         <div className='row'>
           <div className='col-12'>
-          <JSONTree data={inventory} theme={theme}/>
+          <JSONTree 
+            data={inventory} 
+            theme={theme} 
+            hideRoot={true} 
+            shouldExpandNode={(keyName, data, level) => (true)}/>
           </div>
         </div>
       </div>
