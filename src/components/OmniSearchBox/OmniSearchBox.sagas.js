@@ -7,7 +7,7 @@ export function * searchSaga(){
 }
 
 function * search(action) {
-  const haystack = yield select((state) => state[action.payload.inventorySelector]);
+  const {haystack, needle} = action.payload;
 
   // Jsonata
   // **[$contains(`Product Name`, 'Hat')].SKU ~> $sort(function($l, $r) {$l > $r})
@@ -15,10 +15,9 @@ function * search(action) {
   // **[$contains(`Product Name`, 'Hat')].({'s': $.SKU, 'p': $.Price})^(>s)
 
   // **[$contains(`laneid`, 'Essay')].({'title':$.title, 'position':$.position})
-  console.log(action.payload.needle)
   let res;
   try {
-    const expr = jsonata(action.payload.needle);
+    const expr = jsonata(needle);
     res = expr.evaluate(haystack);
   }
   catch (err) {

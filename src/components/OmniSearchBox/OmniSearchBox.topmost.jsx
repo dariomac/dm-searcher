@@ -8,7 +8,7 @@ import { highlight, languages } from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
 
-const OmniBoxSearch = ({ haystackSelector, search }) => {
+const OmniBoxSearch = ({ haystack, search }) => {
   const [needle, setNeedle] = useState('');
 
   const onChange = React.useCallback((e) => {
@@ -37,7 +37,7 @@ const OmniBoxSearch = ({ haystackSelector, search }) => {
               }}
               onKeyDown={(event) => {
                 if(event.key === 'Enter'){
-                  search(needle, haystackSelector);
+                  search(needle, haystack);
                   event.preventDefault();
                 }
               }}
@@ -95,7 +95,7 @@ const OmniBoxSearch = ({ haystackSelector, search }) => {
             </style>
           </div>
           <div className='col-1'>
-            <button onClick={() => search(needle, haystackSelector)}>Go</button>
+            <button onClick={() => search(needle, haystack)}>Go</button>
           </div>
         </div>
       </div>
@@ -109,8 +109,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    search: (needle, haystackSelector) => {
-      return dispatch(actions.searchAction(needle, haystackSelector))
+    search: (needle, haystack) => {
+      return dispatch(actions.searchAction(needle, haystack))
     }
   };
 };

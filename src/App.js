@@ -27,19 +27,19 @@ const theme = {
   base0F: '#3971ED'
 };
 
-const App = ({inventory}) => {
+const App = ({inventory, findings}) => {
   return (
     <>
       <div className='container'>
         <div className='row'>
           <div className='col-12'>
-            <OmniSearchBox haystackSelector="articles"/>
+            <OmniSearchBox haystack={inventory}/>
           </div>
         </div>
         <div className='row'>
           <div className='col-12'>
           <JSONTree 
-            data={inventory} 
+            data={findings || inventory} 
             theme={theme} 
             hideRoot={true} 
             shouldExpandNode={(keyName, data, level) => (true)}/>
@@ -54,7 +54,8 @@ const App = ({inventory}) => {
 
 const mapStateToProps = (state) => {
   return {
-    inventory: state.omniSearchBox && state.omniSearchBox.filtered ? state.omniSearchBox.findings : state.articles
+    inventory: state.articles,
+    findings: state.omniSearchBox.findings
   };
 };
 

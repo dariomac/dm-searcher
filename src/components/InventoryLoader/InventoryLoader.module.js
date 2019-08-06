@@ -1,13 +1,19 @@
 export const FETCH_INVENTORY = 'FETCH_INVENTORY';
 export const COMMIT_INVENTORY = 'COMMIT_INVENTORY';
 
-export const commitInventoryFetcher = (state = {}, action) => {
+const initialState = {
+  inventory: null,
+  loaded: false
+}
+
+export const commitInventoryFetcher = (state = initialState, action) => {
   switch (action.type) {
     case COMMIT_INVENTORY:
         console.log({inventory: action.payload})
       return {
         ...state,
-        inventory: action.payload
+        inventory: action.payload,
+        loaded: true
       };
     default:
       return state;
