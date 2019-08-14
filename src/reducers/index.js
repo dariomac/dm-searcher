@@ -7,10 +7,17 @@ import {
 import {
   searchReducer,
   commitSearchReducer
-} from '../components/OmniSearchBox/OmniSearchBox.module'
+} from '../components/OmniSearchBox/OmniSearchBox.module';
+
+import {
+  reducer,
+  pageReducer
+} from '../components/Router/router.module';
 
 export default combineReducers({
   articles: commitInventoryFetcher,
   needle: searchReducer,
-  omniSearchBox: commitSearchReducer
+  omniSearchBox: commitSearchReducer,
+  location: reducer,
+  pages: pageReducer
 });

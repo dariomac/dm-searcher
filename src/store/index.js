@@ -2,7 +2,8 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import rootReducer from '../reducers';
 import rootSaga from '../sagas';
-
+import { middleware, enhancer } from '../components/Router';
+console.log('aaaaa', enhancer)
 // dev tools middleware
 const reduxDevTools =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
@@ -20,7 +21,7 @@ const sagaMiddleware = createSagaMiddleware();
 export default createStore(
   rootReducer,
   initialStore,
-  compose(applyMiddleware(sagaMiddleware), reduxDevTools));
+  compose(applyMiddleware(sagaMiddleware), applyMiddleware(middleware), enhancer, reduxDevTools));
 
 // run the saga
 sagaMiddleware.run(rootSaga);
