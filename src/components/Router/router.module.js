@@ -1,26 +1,27 @@
 import { connectRoutes, NOT_FOUND } from 'redux-first-router';
-import createHistory from 'history/createBrowserHistory';
 import queryString from 'query-string';
 
-const history = createHistory();
-
-// THE WORK:
-const routesMap = {
-  HOME: '/'
+export const routesMap = {
+  "QS_SEARCH": "/",
+  "TODO": "/todo"
 };
 
-export const { reducer, middleware, enhancer } = connectRoutes(history, routesMap, {
+export const { 
+  reducer: routeReducer, 
+  middleware: routeMiddleware, 
+  enhancer, 
+  initialDispatch 
+} = connectRoutes(routesMap, {
+  initialDispatch: false,
   querySerializer: queryString
-}); // yes, 3 redux aspects
+});
 
 export const pageReducer = (state = {}, action = {}) => {
-  console.log(action);
   switch (action.type) {
-    case 'HOME':
-      return {
-        ...state,
-        query: action.payload.query
-      };
+    case 'QS_SEARCH':{
+      console.log('from reducer: ', {state});
+      return state;
+    }
     case NOT_FOUND:
       return null;
     default:

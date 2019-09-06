@@ -9,7 +9,6 @@ const initialState = {
 export const commitInventoryFetcher = (state = initialState, action) => {
   switch (action.type) {
     case COMMIT_INVENTORY:
-        console.log({inventory: action.payload})
       return {
         ...state,
         inventory: action.payload,

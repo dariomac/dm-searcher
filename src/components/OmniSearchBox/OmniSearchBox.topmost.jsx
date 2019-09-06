@@ -8,15 +8,12 @@ import { highlight, languages } from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
 
-const OmniBoxSearch = ({ haystack, search }) => {
-  const [needle, setNeedle] = useState('');
+const OmniBoxSearch = ({ defaultNeedle, haystack, search }) => {
+  const [needle, setNeedle] = useState(defaultNeedle? defaultNeedle : '');
 
-  const onChange = React.useCallback((e) => {
-      const partialNeedle = e.target.value;
-      setNeedle(partialNeedle);
-    },
-    [setNeedle],
-  );
+  if (needle && needle.length > 0) {
+    search(needle, haystack);
+  }
 
   return (
     <>

@@ -1,9 +1,19 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import './App.css';
+import React from "react";
+import { render } from "react-dom";
+import createStore from "./create-store";
+import { Provider, connect } from 'react-redux';
+
 import JSONTree from 'react-json-tree'
 import InventoryLoader from './components/InventoryLoader';
 import OmniSearchBox from './components/OmniSearchBox';
+
+/*
+Si hago busqueda de 0, escribo en el searchbox y ejecuto action de search (por defecto)
+  Al terminar el search, como location.query es undefined, hago push a history con el qs.
+
+Si accedo con url+querystring, si el location.kind es load, cargo el searchbox y hago ejecuto action de search.
+  Al terminar el search, como location.kind es load, no hago push de querystring
+*/
 
 // https://github.com/reduxjs/redux-devtools/tree/75322b15ee7ba03fddf10ac3399881e302848874/src/react/themes
 const theme = {
@@ -27,35 +37,41 @@ const theme = {
   base0F: '#3971ED'
 };
 
-const App = ({inventory, findings}) => {
-  return (
-    <>
-      <div className='container'>
-        <div className='row'>
-          <div className='col-12'>
-            <OmniSearchBox haystack={inventory}/>
-          </div>
-        </div>
-        <div className='row'>
-          <div className='col-12'>
-          <JSONTree 
-            data={findings || inventory} 
-            theme={theme} 
-            hideRoot={true} 
-            shouldExpandNode={(keyName, data, level) => (true)}/>
-          </div>
+const store = createStore();
+
+const styles = {
+  fontFamily: 'sans-serif',
+  textAlign: 'center',
+};
+
+const App = ({inventory, qs, findings}) => (
+  <>
+    <div className='container'>
+      <div className='row'>
+        <div className='col-12'>
+          <OmniSearchBox haystack={inventory} defaultNeedle={qs}/>
         </div>
       </div>
+      <div className='row'>
+        <div className='col-12'>
+        <JSONTree 
+          data={findings || inventory} 
+          theme={theme} 
+          hideRoot={true} 
+          shouldExpandNode={(keyName, data, level) => (true)}/>
+        </div>
+      </div>
+    </div>
 
-      <InventoryLoader url='./inventory.json'/>
-    </>
-  );
-};
+    <InventoryLoader url='./inventory.json'/>
+  </>
+);
 
 const mapStateToProps = (state) => {
   return {
-    inventory: state.articles,
-    findings: state.omniSearchBox.findings
+    inventory: state.articles.inventory,
+    findings: state.omniSearchBox.search.findings,
+    qs: state.location.query && state.location.query.q
   };
 };
 

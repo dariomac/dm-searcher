@@ -1,5 +1,5 @@
-import { takeLatest, select, put, call } from 'redux-saga/effects';
-import { actions, SEARCH, selectors } from './OmniSearchBox.module';
+import { takeLatest, put } from 'redux-saga/effects';
+import { actions, SEARCH } from './OmniSearchBox.module';
 import jsonata from 'jsonata';
 
 export function * searchSaga(){
@@ -22,6 +22,9 @@ function * search(action) {
   }
   catch (err) {
     console.log('Error: ', {err});
+  }
+
+  if (!res) {
     res = {};
   }
 
