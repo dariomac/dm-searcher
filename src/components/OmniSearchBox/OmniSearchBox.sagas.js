@@ -9,12 +9,6 @@ export function * searchSaga(){
 function * search(action) {
   const {haystack, needle} = action.payload;
 
-  // Jsonata
-  // **[$contains(`Product Name`, 'Hat')].SKU ~> $sort(function($l, $r) {$l > $r})
-  // **[$contains(`Product Name`, 'Hat')].[SKU, Price]
-  // **[$contains(`Product Name`, 'Hat')].({'s': $.SKU, 'p': $.Price})^(>s)
-
-  // **[$contains(`laneid`, 'Essay')].({'title':$.title, 'position':$.position})
   let res;
   try {
     const expr = jsonata(needle);
