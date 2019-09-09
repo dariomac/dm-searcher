@@ -49,7 +49,7 @@ const App = ({inventory, qs, findings}) => (
     <div className='container'>
       <div className='row'>
         <div className='col-12'>
-          <OmniSearchBox haystack={inventory} defaultNeedle={qs}/>
+          <OmniSearchBox haystack={inventory} defaultNeedle={qs} rows={4}/>
         </div>
       </div>
       <div className='row'>

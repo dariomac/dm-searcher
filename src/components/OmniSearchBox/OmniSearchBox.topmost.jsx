@@ -8,7 +8,11 @@ import { highlight, languages } from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
 
-const OmniBoxSearch = ({ defaultNeedle, haystack, search }) => {
+const OmniBoxSearch = ({ defaultNeedle, haystack, search, rows }) => {
+  if (!rows || isNaN(rows)) {
+    rows = 1;
+  }
+
   const [needle, setNeedle] = useState(defaultNeedle? defaultNeedle : '');
 
   if (needle && needle.length > 0) {
@@ -30,7 +34,8 @@ const OmniBoxSearch = ({ defaultNeedle, haystack, search }) => {
                 fontSize: 12,
                 wordWrap: "normal",
                 whiteSpace: "nowrap",
-                border: "1px solid #ccc"
+                border: "1px solid #ccc",
+                height: `${38*rows}px`
               }}
               onKeyDown={(event) => {
                 if(event.key === 'Enter'){
