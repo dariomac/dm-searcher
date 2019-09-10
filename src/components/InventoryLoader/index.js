@@ -1,7 +1,7 @@
-export { default } from './InventoryLoader.topmost';
 
 export { fetchSaga } from './InventoryLoader.sagas';
 
+export { default } from './InventoryLoader.topmost';
 // Exponer
 
 // ActionCreators

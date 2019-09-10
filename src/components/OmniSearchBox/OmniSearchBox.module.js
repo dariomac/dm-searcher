@@ -3,9 +3,16 @@ export const COMMIT_SEARCH = 'COMMIT_SEARCH';
 export const CLEAR = 'CLEAR';
 export const COMMIT_CLEAR = 'COMMIT_CLEAR';
 
+export const types = {
+  SEARCH: 'SEARCH',
+  COMMIT_SEARCH: 'COMMIT_SEARCH',
+  CLEAR: 'CLEAR',
+  COMMIT_CLEAR: 'COMMIT_CLEAR'
+}
+
 export const searchReducer = (state = {}, action) => {
   switch (action.type) {
-    case SEARCH:
+    case types.SEARCH:
       return action.payload.needle;
     default:
       return state;
@@ -14,7 +21,7 @@ export const searchReducer = (state = {}, action) => {
 
 export const commitSearchReducer = (state = {}, action) => {
   switch (action.type) {
-    case COMMIT_SEARCH:
+    case types.COMMIT_SEARCH:
       return {
         ...state,
         findings: action.payload,
@@ -25,10 +32,10 @@ export const commitSearchReducer = (state = {}, action) => {
   }
 }
 
-export const actions = {
+export const creators = {
   searchAction: (needle, haystack) => {
     return {
-      type: SEARCH,
+      type: types.SEARCH,
       payload: {
         needle,
         haystack
@@ -37,7 +44,7 @@ export const actions = {
   },
   commitSearch: (findings) => {
     return {
-      type: COMMIT_SEARCH,
+      type: types.COMMIT_SEARCH,
       payload: findings
     }
   }

@@ -1,9 +1,9 @@
-import { takeLatest, put } from 'redux-saga/effects';
-import { actions, SEARCH } from './OmniSearchBox.module';
+import { takeLatest, put, fork } from 'redux-saga/effects';
+import { creators, types } from './OmniSearchBox.module';
 import jsonata from 'jsonata';
 
-export function * searchSaga(){
-  yield takeLatest(SEARCH, search);
+export function * searchSaga() {
+  yield takeLatest(types.SEARCH, search);
 }
 
 function * search(action) {
@@ -22,5 +22,11 @@ function * search(action) {
     res = {};
   }
 
-  yield put(actions.commitSearch(res));
+  yield put(creators.commitSearch(res));
 }
+
+export const sagas = {
+  search: function * () {
+    yield takeLatest(types.SEARCH, search);
+  }
+};

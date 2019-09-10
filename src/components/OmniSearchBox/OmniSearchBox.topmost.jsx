@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import './OmniSearchBox.style.css';
-import { actions } from './OmniSearchBox.module';
+import { creators } from './OmniSearchBox.module';
 
 import Editor from 'react-simple-code-editor';
 import { highlight, languages } from 'prismjs/components/prism-core';
@@ -23,7 +23,7 @@ const OmniBoxSearch = ({ defaultNeedle, haystack, search, rows }) => {
     <>
       <div className='container'>
         <div className='row omni-search-box'>
-          <div className='col-11'>
+          <div className='col-12'>
             <Editor
               value={needle}
               onValueChange={setNeedle}
@@ -36,12 +36,6 @@ const OmniBoxSearch = ({ defaultNeedle, haystack, search, rows }) => {
                 whiteSpace: "nowrap",
                 border: "1px solid #ccc",
                 height: `${38*rows}px`
-              }}
-              onKeyDown={(event) => {
-                if(event.key === 'Enter'){
-                  search(needle, haystack);
-                  event.preventDefault();
-                }
               }}
             />
             <style>
@@ -96,9 +90,6 @@ const OmniBoxSearch = ({ defaultNeedle, haystack, search, rows }) => {
                 }`}
             </style>
           </div>
-          <div className='col-1'>
-            <button onClick={() => search(needle, haystack)}>Go</button>
-          </div>
         </div>
       </div>
     </>
@@ -112,7 +103,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     search: (needle, haystack) => {
-      return dispatch(actions.searchAction(needle, haystack))
+      return dispatch(creators.searchAction(needle, haystack))
     }
   };
 };

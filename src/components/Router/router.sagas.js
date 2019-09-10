@@ -1,13 +1,11 @@
-import { SEARCH } from '../OmniSearchBox';
-import { actions } from './';
+import { actions } from '../OmniSearchBox';
 import { takeLatest } from 'redux-saga/effects';
 import { history } from 'redux-first-router'
 
 export function * updateRouterSaga(){
-  yield takeLatest(SEARCH, updateRouter);
+  yield takeLatest(actions.SEARCH, updateRouter);
 }
 
 function updateRouter(action) {
-  console.log(actions)
   history().push(`/?q=${encodeURIComponent(action.payload.needle)}`);
 }

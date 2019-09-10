@@ -1,9 +1,7 @@
 import React from "react";
-import { render } from "react-dom";
-import createStore from "./create-store";
-import { Provider, connect } from 'react-redux';
-
+import { connect } from 'react-redux';
 import JSONTree from 'react-json-tree'
+
 import InventoryLoader from './components/InventoryLoader';
 import OmniSearchBox from './components/OmniSearchBox';
 
@@ -36,8 +34,6 @@ const theme = {
   base0E: '#A36AC7',
   base0F: '#3971ED'
 };
-
-const store = createStore();
 
 const styles = {
   fontFamily: 'sans-serif',
