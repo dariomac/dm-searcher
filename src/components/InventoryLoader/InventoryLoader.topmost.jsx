@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { actions } from './InventoryLoader.module';
+import { creators } from './InventoryLoader.module';
 
 const InventoryLoader = ({ url, fetchInventory }) => {
   return (
@@ -17,7 +17,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchInventory: (url) => {
-      dispatch(actions.fetchInventoryAction(url));
+      dispatch(creators.fetchInventoryAction(url));
     }
   };
 };

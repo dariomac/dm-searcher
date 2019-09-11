@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 
 import {
-  commitInventoryFetcher as inventoryFetcher
-} from './components/InventoryLoader/InventoryLoader.module';
+  reducers as inventoryFetcher
+} from './components/InventoryLoader';
 
 import {
   reducers as omniSearchReducer

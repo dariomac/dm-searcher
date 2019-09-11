@@ -1,8 +1,3 @@
-export const SEARCH = 'SEARCH';
-export const COMMIT_SEARCH = 'COMMIT_SEARCH';
-export const CLEAR = 'CLEAR';
-export const COMMIT_CLEAR = 'COMMIT_CLEAR';
-
 export const types = {
   SEARCH: 'SEARCH',
   COMMIT_SEARCH: 'COMMIT_SEARCH',

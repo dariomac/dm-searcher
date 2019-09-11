@@ -19,7 +19,6 @@ export const {
 export const pageReducer = (state = {}, action = {}) => {
   switch (action.type) {
     case 'QS_SEARCH':{
-      console.log('from reducer: ', {state});
       return state;
     }
     case NOT_FOUND:

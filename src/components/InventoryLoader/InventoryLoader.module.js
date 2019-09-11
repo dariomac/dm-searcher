@@ -1,28 +1,26 @@
-export const FETCH_INVENTORY = 'FETCH_INVENTORY';
-export const COMMIT_INVENTORY = 'COMMIT_INVENTORY';
+export const types = {
+  FETCH_INVENTORY: 'FETCH_INVENTORY',
+  COMMIT_INVENTORY: 'COMMIT_INVENTORY'
+};
 
 const initialState = {
   inventory: null,
   loaded: false
-}
+};
 
-export const commitInventoryFetcher = (state = initialState, action) => {
+export const commitInventoryFetcherReducer = (state = initialState, action) => {
   switch (action.type) {
-    case COMMIT_INVENTORY:
-      return {
-        ...state,
-        inventory: action.payload,
-        loaded: true
-      };
+    case types.COMMIT_INVENTORY:
+      return action.payload
     default:
       return state;
   }
 };
 
-export const actions = {
+export const creators = {
   fetchInventoryAction: (url) => {
     return {
-      type: FETCH_INVENTORY,
+      type: types.FETCH_INVENTORY,
       payload: { 
         url
       }
@@ -30,7 +28,7 @@ export const actions = {
   },
   commitInventoryAction: (payload) => {
     return {
-      type: COMMIT_INVENTORY,
+      type: types.COMMIT_INVENTORY,
       payload: payload
     };
   }

@@ -1,15 +1,17 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
-import { actions, FETCH_INVENTORY } from './InventoryLoader.module';
-
-export function * fetchSaga () {
-  yield takeLatest(FETCH_INVENTORY, fetchInventory);
-}
+import { creators, types } from './InventoryLoader.module';
   
 function * fetchInventory (action) {
   // fetch from server
   const response = yield call(fetch, action.payload.url); // we should remove last ',' before closing the array
   if (response.ok) {
     const data = yield call([response, 'json']);
-    yield put(actions.commitInventoryAction(data));
+    yield put(creators.commitInventoryAction(data));
   }
 }
+
+export const sagas = { 
+  fetch: function * () {
+    yield takeLatest(types.FETCH_INVENTORY, fetchInventory);
+  }
+};

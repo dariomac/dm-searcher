@@ -6,7 +6,7 @@ import {
 
 export { sagas } from './OmniSearchBox.sagas';
 
-export { types as actions} from './OmniSearchBox.module';
+export { types as actions } from './OmniSearchBox.module';
 export { creators } from './OmniSearchBox.module';
 
 export const reducers = combineReducers({
