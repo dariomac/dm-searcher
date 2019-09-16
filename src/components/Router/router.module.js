@@ -3,6 +3,7 @@ import queryString from 'query-string';
 
 export const routesMap = {
   "QS_SEARCH": "/",
+  "QS_SEARCH": "/dm-searcher",
   "TODO": "/todo"
 };
 

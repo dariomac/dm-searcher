@@ -7,5 +7,5 @@ export function * updateRouterSaga(){
 }
 
 function updateRouter(action) {
-  history().push(`/?q=${encodeURIComponent(action.payload.needle)}`);
+  history().push(`/dm-searcher?q=${encodeURIComponent(action.payload.needle)}`);
 }
