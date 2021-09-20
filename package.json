@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "jsonata": "^1.6.5",
-    "prismjs": "^1.17.1",
+    "prismjs": "^1.25.0",
     "query-string": "^6.8.2",
     "react": "^16.9.0",
     "react-devtools": "^3.6.3",
